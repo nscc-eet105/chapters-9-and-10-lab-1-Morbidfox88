@@ -5,20 +5,26 @@
 print("Name Processor.\n")
 name = input("Enter your name: ")
 
+
+
 if "," in name:
-    print(name)
+    correct_form = name.split(",")
+    if len (correct_form) == 2:
+        last_name = correct_form[0].strip().lower()
+        first_name = correct_form[1].strip().lower()
+        formatted_last_name = last_name[:1].upper() + last_name[1:]
+        formatted_first_name = first_name[:1].upper() + first_name[1:]
+        formatted_name = f"{formatted_last_name}, {formatted_first_name}"
+        print(formatted_name)
 else:
     names = name.split()
     if len(names) == 2:
-        first_name = names[0]
-        last_name = names[1]
-        formatted_name = f"{last_name.capitalize()}, {first_name.capitalize()}"
+        first_name = names[0].strip().lower()
+        last_name = names[1].strip().lower()
+        formatted_first_name = first_name[:1].upper() + first_name[1:]
+        formatted_last_name = last_name[:1].upper() + last_name[1:]
+        formatted_name = f"{formatted_last_name}, {formatted_first_name}"
         print(formatted_name)
-    elif len(names) == 2:
-        first_name = name[1]
-        last_name = name[0]
-        correct_name = f"{last_name.capitalize()}, {first_name.capitalize()}"
-        print(correct_name)
-
+    
     else:
         print("Please enter both your first and last name.")
